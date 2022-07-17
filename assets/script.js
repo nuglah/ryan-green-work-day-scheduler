@@ -3,46 +3,52 @@ var currentDayOfWeek = dayjs().format("dddd");
 var displayClock = document.getElementById("currentDay");
 var timeBlock = document.getElementById("time-block");
 var hour = document.getElementById("hour");
-let currentHour = parseInt(dayjs().format("H"));
-var timeColor = document.getElementsByClassName("d-none");
+let currentHour = dayjs().format("H");
+var timeColor = document.getElementsByClassName("col-8");
+var savedHours = JSON.parse(localStorage.getItem("hours"));
 console.log(this);
-console.log(todaysDate);
+console.log(currentHour);
 console.log(currentDayOfWeek);
-console.log(hour.textContent);
-var rowHour = parseInt(hour);
+// console.log(hour.textContent);
+// var rowHour = parseInt(hour);
 
-var hours = {
-  hour1: "9 am",
-  hour2: "10 am",
-  hour3: "11 am",
-  hour4: "12 pm",
-  hour5: "1 pm",
-  hour6: "2 pm",
-  hour7: "3 pm",
-  hour7: "4 pm",
-  hour8: "5 pm",
-  hour9: "6 pm",
-  hour10: "7 pm",
-  hour11: "8 pm",
-  hour12: "9 pm",
-};
+var hours = [
+  { el: "hour9", btn: "btn9", time: "9", text: "" },
+  { el: "hour10", btn: "btn10", time: "10", text: "" },
+  { el: "hour11", btn: "btn11", time: "11", text: "" },
+  { el: "hour12", btn: "btn12", time: "12", text: "" },
+  { el: "hour1", btn: "btn1", time: "13", text: "" },
+  { el: "hour2", btn: "btn2", time: "14", text: "" },
+  { el: "hour3", btn: "btn3", time: "15", text: "" },
+  { el: "hour4", btn: "btn4", time: "16", text: "" },
+  { el: "hour5", btn: "btn5", time: "17", text: "" },
+];
 
 function update() {
   $(displayClock).text(dayjs().format("MMMM, D, YYYY H:mm:ss a"));
 }
 
 // Compares row id to current hour and sets color accordingly
-if (currentHour === rowHour) {
-  $(timeColor).addClass("present");
-  // } else if (currentHour < rowHour && currentHour > rowHour - 6) {
-  //   setColor(row, "green");
-  // } else if (currentHour > rowHour && currentHour < rowHour + 6) {
-  //   setColor(row, "lightgrey");
-  // } else {
-  //   setColor(row, "white");
+function color() {
+  let hrs = "";
+  if (savedHours) {
+    hrs = savedHours;
+  } else {
+    hrs = hours;
+  }
+  for (let i = 0; i < hrs.length; i++) {
+    const el = document.getElementById(hrs[i].el);
+    $(el).val(hrs[i].text);
+    if (parseInt(currentHour) > parseInt(hrs[i].time)) {
+      $(el).addClass("past");
+    } else if (parseInt(currentHour) === parseInt(hrs[i].time)) {
+      $(el).addClass("present");
+    } else {
+      $(el).addClass("future");
+    }
+  }
 }
-
-$(hour).addClass("");
+color();
 
 // if (currentHour ===)
 
@@ -51,6 +57,19 @@ $(hour).addClass("");
 //     $(timeBlock).addClass("past");
 //   }
 // }
+$(".saveBtn").on("click", function (event) {
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+  for (let i = 0; i < hours.length; i++) {
+    if (hours[i].btn === event.target.id) {
+      const value = document.getElementById(hours[i].el).value;
+      hours[i].text = value;
+    }
+  }
+  localStorage.setItem("hours", JSON.stringify(hours));
+  //(... rest of your JS code)
+  console.log("event", hours);
+});
 
 update();
 setInterval(update, 1000);
