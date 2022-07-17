@@ -18,7 +18,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/style.css" />
     <title>Work Day Scheduler</title>
   </head>
 
@@ -30,9 +30,138 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+      <div class="row">
+        <div class="hour" id="hour">9am</div>
+
+        <div class="col-8 description backgroundTool border-bottom scheduler">
+          <span class="textData 9amSpan">text here </span>
+          <input
+            id="9amInput "
+            class="d-none border-0 form-control textarea bg-transparent am9Input"
+            type="text"
+            placeholder="Default input"
+          />
+        </div>
+        <div class="col-2 saveBtn">
+          <button
+            type="submit"
+            id="9amButton"
+            class="btn btn-primary mb-2 am9Button"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="hour" id="hour">10 am</div>
+
+        <div class="col-8 description backgroundTool border-bottom scheduler">
+          <span class="textData 10amSpan">text here </span>
+          <input
+            id="10amInput"
+            class="d-none border-0 form-control textarea bg-transparent am10Input"
+            type="text"
+            placeholder="Default input"
+          />
+        </div>
+        <div class="col-2 saveBtn">
+          <button
+            type="submit"
+            id="10amButton"
+            class="btn btn-primary mb-2 am10Button"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="hour" id="hour">11am</div>
+
+        <div class="col-8 description backgroundTool border-bottom scheduler">
+          <span class="textData 11amSpan">text here </span>
+          <input
+            id="11amInput"
+            class="d-none border-0 form-control textarea bg-transparent am11Input"
+            type="text"
+            placeholder="Default input"
+          />
+        </div>
+        <div class="col-2 saveBtn">
+          <button
+            type="submit"
+            id="11amButton"
+            class="btn btn-primary mb-2 am11Button"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="hour" id="hour">12pm</div>
+
+        <div class="col-8 description backgroundTool border-bottom scheduler">
+          <span class="textData 12pmSpan">text here </span>
+          <input
+            id="12pmInput"
+            class="d-none border-0 form-control textarea bg-transparent pm12Input"
+            type="text"
+            placeholder="Default input"
+          />
+        </div>
+        <div class="col-2 saveBtn">
+          <button
+            type="submit"
+            id="12amButton"
+            class="btn btn-primary mb-2 pm12Button"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="hour" id="hour">1pm</div>
+
+        <div class="col-8 description backgroundTool border-bottom scheduler">
+          <span class="textData 1pmSpan">text here </span>
+          <input
+            id="1pmInput"
+            class="d-none border-0 form-control textarea bg-transparent pm1Input"
+            type="text"
+            placeholder="Default input"
+          />
+        </div>
+        <div class="col-2 saveBtn">
+          <button
+            type="submit"
+            id="1pmButton"
+            class="btn btn-primary mb-2 pm1Button"
+          >
+            Save
+          </button>
+        </div>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.3/dayjs.min.js"
+      integrity="sha512-Ot7ArUEhJDU0cwoBNNnWe487kjL5wAOsIYig8llY/l0P2TUFwgsAHVmrZMHsT8NGo+HwkjTJsNErS6QqIkBxDw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.3/plugin/weekday.min.js"
+      integrity="sha512-+EJ/Ed/UbhfSypwkMnTIxgJ3izeQNc5655zPTlVqcgJ4Zd4K++JYUyg4Jy5rnKX9MfoIyfXJsu5N30MRHnShYw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- <script>
+      dayjs.extend(window.dayjs_weekday);
+    </script> -->
+    <script src="./assets/script.js"></script>
   </body>
 </html>
