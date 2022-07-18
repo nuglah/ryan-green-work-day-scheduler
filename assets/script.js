@@ -30,7 +30,7 @@ if (savedHours) {
 }
 
 function update() {
-  $(displayClock).text(dayjs().format("MMMM, D, YYYY H:mm:ss a"));
+  $(displayClock).text(dayjs().format("dddd, MMMM D"));
 }
 
 // Compares row id to current hour and sets color accordingly
