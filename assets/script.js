@@ -1,5 +1,3 @@
-var todaysDate = dayjs().format("MM/DD/YYYY hh:mm:ss a");
-var currentDayOfWeek = dayjs().format("dddd");
 var displayClock = document.getElementById("currentDay");
 var timeBlock = document.getElementById("time-block");
 var hour = document.getElementById("hour");
@@ -7,12 +5,15 @@ let currentHour = dayjs().format("H");
 var timeColor = document.getElementsByClassName("col-8");
 var savedHours = JSON.parse(localStorage.getItem("hours"));
 var hours = [];
-console.log(this);
-console.log(currentHour);
-console.log(currentDayOfWeek);
-// console.log(hour.textContent);
-// var rowHour = parseInt(hour);
 
+// Function for the date in the jumbotron using day.js and set interval to make it stay updated.
+function update() {
+  $(displayClock).text(dayjs().format("dddd, MMMM D"));
+}
+
+setInterval(update, 1000);
+
+// This if statement contains an array of objects. Checks if there is something in local stoarge and if not
 if (savedHours) {
   hours = savedHours;
 } else {
@@ -28,12 +29,7 @@ if (savedHours) {
     { el: "hour5", btn: "btn5", time: "17", text: "" },
   ];
 }
-
-function update() {
-  $(displayClock).text(dayjs().format("dddd, MMMM D"));
-}
-
-// Compares row id to current hour and sets color accordingly
+// Function that loops through the hours array and changes the color based on if the the hout is in the past, present, or future
 function color() {
   for (let i = 0; i < hours.length; i++) {
     const el = document.getElementById(hours[i].el);
@@ -49,28 +45,17 @@ function color() {
 }
 color();
 
-// if (currentHour ===)
-
-// function setColor() {
-//   if (dayjs(hour, "h a").isValid()) {
-//     $(timeBlock).addClass("past");
-//   }
-// }
+// Makes the save buttons save the text to local storage.
 $(".saveBtn").on("click", function (event) {
-  // event.stopPropagation();
-  // event.stopImmediatePropagation();
   for (let i = 0; i < hours.length; i++) {
     if (hours[i].btn === event.target.id) {
       const value = document.getElementById(hours[i].el).value;
       hours[i].text = value;
     } else {
-      // hours[i].text = hour[i].text;
     }
   }
   localStorage.setItem("hours", JSON.stringify(hours));
-  //(... rest of your JS code)
   console.log("event", hours);
 });
 
 update();
-setInterval(update, 1000);
