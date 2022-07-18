@@ -44,6 +44,11 @@ function color() {
   }
 }
 color();
+setInterval(function () {
+  console.log("dfdf");
+  currentHour = dayjs().format("H");
+  color();
+}, 60 * 1000);
 
 // Makes the save buttons save the text to local storage.
 $(".saveBtn").on("click", function (event) {
