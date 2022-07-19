@@ -13,7 +13,7 @@ function update() {
 
 setInterval(update, 1000);
 
-// This if statement contains an array of objects. Checks if there is something in local stoarge and if not
+// This if statement contains an array of objects. Checks if there is something in local storage from the hours array. Clears text if there is no lacal storage.
 if (savedHours) {
   hours = savedHours;
 } else {
@@ -29,7 +29,7 @@ if (savedHours) {
     { el: "hour5", btn: "btn5", time: "17", text: "" },
   ];
 }
-// Function that loops through the hours array and changes the color based on if the the hout is in the past, present, or future
+// Function that loops through the hours array and changes the color based on if the the hour is in the past, present, or future
 function color() {
   for (let i = 0; i < hours.length; i++) {
     const el = document.getElementById(hours[i].el);
@@ -44,14 +44,10 @@ function color() {
   }
 }
 color();
-setInterval(function () {
-  console.log("dfdf");
-  currentHour = dayjs().format("H");
-  color();
-}, 60 * 1000);
 
 // Makes the save buttons save the text to local storage.
 $(".saveBtn").on("click", function (event) {
+  console.log(event.target.id);
   for (let i = 0; i < hours.length; i++) {
     if (hours[i].btn === event.target.id) {
       const value = document.getElementById(hours[i].el).value;
